@@ -1,6 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-<head><title>Hello World</title></head>
-<body><h1>Hello World</h1></body>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+        text-align: center;
+    }
+    .container {
+        display: flex;
+        align-items: center;
+        margin-top: -20px; /* Shift everything up */
+    }
+    .content {
+        margin-left: 20px;
+        text-align: left;
+    }
+    h1 {
+        margin-bottom: 10px;
+    }
+    p {
+        margin-left: 5;
+        margin-bottom: 8px;
+    }
+    img {
+        max-width: 200px;
+    }
+    form {
+        display: flex;
+        align-items: center;
+    }
+    input[type="email"] {
+        padding: 10px;
+        font-size: 16px;
+        width: 300px;
+        border: 0.5px solid #ddd;
+        border-radius: 8px;
+        margin-right: 10px;
+    }
+    input[type="submit"] {
+        padding: 10px 20px;
+        background-color: #ff7eb9;
+        color: white;
+        font-size: 12px;
+        border: none;
+        border-radius: 8px; /* Match the border-radius of the email input */
+        cursor: pointer;
+        height: 42px; /* Match the height of the email input */
+    }
+    input[type="submit"]:hover {
+        background-color: #e56ba7;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <img src="logo.svg" alt="Placeholder Image">
+        <div class="content">
+            <h1>See your friends' favorite places.</h1>
+            <p>Get early access to the app:</p>
+            <form>
+                <input type="email" placeholder="Enter your email" required>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+</body>
 </html>
-
