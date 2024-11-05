@@ -1,70 +1,20 @@
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
-        text-align: center;
-    }
-    .container {
-        display: flex;
-        align-items: center;
-        margin-top: -20px; /* Shift everything up */
-    }
-    .content {
-        margin-left: 20px;
-        text-align: left;
-    }
-    h1 {
-        margin-bottom: 10px;
-    }
-    p {
-        margin-left: 5;
-        margin-bottom: 8px;
-    }
-    img {
-        max-width: 200px;
-    }
-    form {
-        display: flex;
-        align-items: center;
-    }
-    input[type="email"] {
-        padding: 10px;
-        font-size: 16px;
-        width: 300px;
-        border: 0.5px solid #ddd;
-        border-radius: 8px;
-        margin-right: 10px;
-    }
-    input[type="submit"] {
-        padding: 10px 20px;
-        background-color: #ff7eb9;
-        color: white;
-        font-size: 12px;
-        border: none;
-        border-radius: 8px; /* Match the border-radius of the email input */
-        cursor: pointer;
-        height: 42px; /* Match the height of the email input */
-    }
-    input[type="submit"]:hover {
-        background-color: #e56ba7;
-    }
-</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friends' Favorite Places</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <div class="container">
-        <img src="logo.svg" alt="Placeholder Image">
-        <div class="content">
-            <h1>See your friends' favorite places.</h1>
-            <p>Get early access to the app:</p>
-            <form>
-                <input type="email" placeholder="Enter your email" required>
-                <input type="submit" value="Submit">
+<body class="flex items-center justify-center min-h-screen bg-gradient-to-br from-pink-200 to-blue-200 text-center">
+    <div class="flex flex-col items-center sm:flex-row sm:items-start space-y-6 sm:space-y-0 sm:space-x-6 px-6">
+        <img src="logo.svg" alt="Placeholder Image" class="w-32 sm:w-48">
+        <div class="text-center sm:text-left">
+            <h1 class="text-xl sm:text-2xl font-bold mb-2">See your friends' favorite places.</h1>
+            <p class="text-sm sm:text-base mb-4">Get early access to the app:</p>
+            <form class="flex flex-col sm:flex-row items-center sm:space-x-2 space-y-3 sm:space-y-0">
+                <input type="email" placeholder="Enter your email" required class="px-4 py-2 w-72 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-300">
+                <input type="submit" value="Submit" class="px-6 py-2 bg-pink-400 text-white font-semibold text-sm rounded-lg cursor-pointer hover:bg-pink-500 transition duration-200">
             </form>
         </div>
     </div>
