@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Friends' Favorite Places</title>
+    <title>cosmo</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="flex items-center justify-center min-h-screen bg-gradient-to-br from-pink-200 to-blue-200 text-center">
@@ -42,25 +42,30 @@
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const analytics = getAnalytics(app);
+
+        await db.collection("emails").doc("test@example.com").set({ 
+        signup: "Test Date"
+        });
+
         
         // Form submission handler
-        document.querySelector("form").addEventListener("submit", async (e) => {
-            e.preventDefault(); // Prevent form from refreshing
-            const email = e.target.elements[0].value;
-            const signupDate = new Date().toLocaleString('en-GB', { timeZone: 'UTC', dateStyle: 'long', timeStyle: 'medium' });
+        // document.querySelector("form").addEventListener("submit", async (e) => {
+        //     e.preventDefault(); // Prevent form from refreshing
+        //     const email = e.target.elements[0].value;
+        //     const signupDate = new Date().toLocaleString('en-GB', { timeZone: 'UTC', dateStyle: 'long', timeStyle: 'medium' });
 
-            try {
-                // Add email and signup date to Firestore
-                await db.collection("emails").doc(email).set({ 
-                    signup: signupDate 
-                });
-                alert("Email submitted successfully!");
-                e.target.reset();
-            } catch (error) {
-                console.error("Error adding email: ", error);
-                alert("Failed to submit email.");
-            }
-        });
+        //     try {
+        //         // Add email and signup date to Firestore
+        //         await db.collection("emails").doc(email).set({ 
+        //             signup: signupDate 
+        //         });
+        //         alert("Email submitted successfully!");
+        //         e.target.reset();
+        //     } catch (error) {
+        //         console.error("Error adding email: ", error);
+        //         alert("Failed to submit email.");
+        //     }
+        // });
     </script>
 </body>
 </html>
