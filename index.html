@@ -40,34 +40,33 @@
         const db = getFirestore(app);
 
         // Test Firestore write operation
-        try {
-            await setDoc(doc(db, "emails", "test@example.com"), {
-                signup: "Test Date"
-            });
-            console.log("Test document written successfully.");
-        } catch (error) {
-            console.error("Error adding test document: ", error);
-        }
+        // try {
+        //     await setDoc(doc(db, "emails", "test@example.com"), {
+        //         signup: "Test Date"
+        //     });
+        //     console.log("Test document written successfully.");
+        // } catch (error) {
+        //     console.error("Error adding test document: ", error);
+        // }
 
-        
-        // Form submission handler
-        // document.querySelector("form").addEventListener("submit", async (e) => {
-        //     e.preventDefault(); // Prevent form from refreshing
-        //     const email = e.target.elements[0].value;
-        //     const signupDate = new Date().toLocaleString('en-GB', { timeZone: 'UTC', dateStyle: 'long', timeStyle: 'medium' });
+    
+        document.querySelector("form").addEventListener("submit", async (e) => {
+            e.preventDefault(); // Prevent form from refreshing
+            const email = e.target.elements[0].value;
+            const signupDate = new Date().toLocaleString('en-GB', { timeZone: 'UTC', dateStyle: 'long', timeStyle: 'medium' });
 
-        //     try {
-        //         // Add email and signup date to Firestore
-        //         await db.collection("emails").doc(email).set({ 
-        //             signup: signupDate 
-        //         });
-        //         alert("Email submitted successfully!");
-        //         e.target.reset();
-        //     } catch (error) {
-        //         console.error("Error adding email: ", error);
-        //         alert("Failed to submit email.");
-        //     }
-        // });
+            try {
+                // Add email and signup date to Firestore
+                await db.collection("emails").doc(email).set({ 
+                    signup: signupDate 
+                });
+                alert("Email submitted successfully!");
+                e.target.reset();
+            } catch (error) {
+                console.error("Error adding email: ", error);
+                alert("Failed to submit email.");
+            }
+        });
     </script>
 </body>
 </html>
