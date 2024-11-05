@@ -8,7 +8,7 @@
 </head>
 <body class="flex items-center justify-center min-h-screen bg-gradient-to-br from-pink-200 to-blue-200 text-center">
     <div class="flex flex-col items-center sm:flex-row sm:items-start space-y-6 sm:space-y-0 sm:space-x-6 px-6">
-        <img src="logo.svg" alt="Placeholder Image" class="w-32 sm:w-48">
+        <img src="logo.svg" alt="logo" class="w-32 sm:w-48">
         <div class="text-center sm:text-left">
             <h1 class="text-xl sm:text-2xl font-bold mb-2">See your friends' favorite places.</h1>
             <p class="text-sm sm:text-base mb-4">Get early access to the app:</p>
@@ -19,27 +19,29 @@
         </div>
     </div>
 
-    <!-- Firebase SDKs -->
-    <script src="https://www.gstatic.com/firebasejs/9.x/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.x/firebase-firestore.js"></script>
-    
-    <script>
-        // Firebase configuration
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
         const firebaseConfig = {
-            apiKey: "AIzaSyA_46hevYI24Nvj_oz1LMYiPyNmcU-4tDM",
-            authDomain: "reccapp-26231.firebaseapp.com",
-            databaseURL: "https://reccapp-26231-default-rtdb.europe-west1.firebasedatabase.app",
-            projectId: "reccapp-26231",
-            storageBucket: "reccapp-26231.appspot.com",
-            messagingSenderId: "261665606195",
-            appId: "1:261665606195:web:e8130ad368e08a397a7146",
-            measurementId: "G-YZ6V9R6G5J"
+          apiKey: "AIzaSyA_46hevYI24Nvj_oz1LMYiPyNmcU-4tDM",
+          authDomain: "reccapp-26231.firebaseapp.com",
+          databaseURL: "https://reccapp-26231-default-rtdb.europe-west1.firebasedatabase.app",
+          projectId: "reccapp-26231",
+          storageBucket: "reccapp-26231.appspot.com",
+          messagingSenderId: "261665606195",
+          appId: "1:261665606195:web:e8130ad368e08a397a7146",
+          measurementId: "G-YZ6V9R6G5J"
         };
-
-        
+      
         // Initialize Firebase
-        const app = firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
         
         // Form submission handler
         document.querySelector("form").addEventListener("submit", async (e) => {
