@@ -20,32 +20,34 @@
     </div>
 
     <script type="module">
-        // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-      
-        // Your web app's Firebase configuration
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        import { getFirestore, collection, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+        
+        // Firebase configuration
         const firebaseConfig = {
-          apiKey: "AIzaSyA_46hevYI24Nvj_oz1LMYiPyNmcU-4tDM",
-          authDomain: "reccapp-26231.firebaseapp.com",
-          databaseURL: "https://reccapp-26231-default-rtdb.europe-west1.firebasedatabase.app",
-          projectId: "reccapp-26231",
-          storageBucket: "reccapp-26231.appspot.com",
-          messagingSenderId: "261665606195",
-          appId: "1:261665606195:web:e8130ad368e08a397a7146",
-          measurementId: "G-YZ6V9R6G5J"
+            apiKey: "AIzaSyA_46hevYI24Nvj_oz1LMYiPyNmcU-4tDM",
+            authDomain: "reccapp-26231.firebaseapp.com",
+            databaseURL: "https://reccapp-26231-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "reccapp-26231",
+            storageBucket: "reccapp-26231.appspot.com",
+            messagingSenderId: "261665606195",
+            appId: "1:261665606195:web:e8130ad368e08a397a7146",
+            measurementId: "G-YZ6V9R6G5J"
         };
-      
-        // Initialize Firebase
+        
+        // Initialize Firebase and Firestore
         const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
+        const db = getFirestore(app);
 
-        await db.collection("emails").doc("test@example.com").set({ 
-        signup: "Test Date"
-        });
+        // Test Firestore write operation
+        try {
+            await setDoc(doc(db, "emails", "test@example.com"), {
+                signup: "Test Date"
+            });
+            console.log("Test document written successfully.");
+        } catch (error) {
+            console.error("Error adding test document: ", error);
+        }
 
         
         // Form submission handler
