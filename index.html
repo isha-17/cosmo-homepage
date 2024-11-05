@@ -12,11 +12,53 @@
         <div class="text-center sm:text-left">
             <h1 class="text-xl sm:text-2xl font-bold mb-2">See your friends' favorite places.</h1>
             <p class="text-sm sm:text-base mb-4">Get early access to the app:</p>
-            <form class="flex flex-col sm:flex-row items-center sm:space-x-2 space-y-3 sm:space-y-0">
+            <form>
                 <input type="email" placeholder="Enter your email" required class="px-4 py-2 w-72 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-300">
                 <input type="submit" value="Submit" class="px-6 py-2 bg-pink-400 text-white font-semibold text-sm rounded-lg cursor-pointer hover:bg-pink-500 transition duration-200">
             </form>
         </div>
     </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.x/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.x/firebase-firestore.js"></script>
+    
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyA_46hevYI24Nvj_oz1LMYiPyNmcU-4tDM",
+            authDomain: "reccapp-26231.firebaseapp.com",
+            databaseURL: "https://reccapp-26231-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "reccapp-26231",
+            storageBucket: "reccapp-26231.appspot.com",
+            messagingSenderId: "261665606195",
+            appId: "1:261665606195:web:e8130ad368e08a397a7146",
+            measurementId: "G-YZ6V9R6G5J"
+        };
+
+        
+        // Initialize Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        
+        // Form submission handler
+        document.querySelector("form").addEventListener("submit", async (e) => {
+            e.preventDefault(); // Prevent form from refreshing
+            const email = e.target.elements[0].value;
+            const signupDate = new Date().toLocaleString('en-GB', { timeZone: 'UTC', dateStyle: 'long', timeStyle: 'medium' });
+
+            try {
+                // Add email and signup date to Firestore
+                await db.collection("emails").doc(email).set({ 
+                    signup: signupDate 
+                });
+                alert("Email submitted successfully!");
+                e.target.reset();
+            } catch (error) {
+                console.error("Error adding email: ", error);
+                alert("Failed to submit email.");
+            }
+        });
+    </script>
 </body>
 </html>
