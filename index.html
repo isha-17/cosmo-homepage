@@ -59,7 +59,7 @@
             try {
                 // Add email and signup date to Firestore using setDoc and doc
                 await setDoc(doc(db, "emails", email), { 
-                    signup: signupDate 
+                    signup: "Test Date"
                 });
                 alert("Email submitted successfully!");
                 e.target.reset();
