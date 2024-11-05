@@ -50,14 +50,15 @@
         // }
 
     
+        // Form submission handler
         document.querySelector("form").addEventListener("submit", async (e) => {
             e.preventDefault(); // Prevent form from refreshing
             const email = e.target.elements[0].value;
             const signupDate = new Date().toLocaleString('en-GB', { timeZone: 'UTC', dateStyle: 'long', timeStyle: 'medium' });
 
             try {
-                // Add email and signup date to Firestore
-                await db.collection("emails").doc(email).set({ 
+                // Add email and signup date to Firestore using setDoc and doc
+                await setDoc(doc(db, "emails", email), { 
                     signup: signupDate 
                 });
                 alert("Email submitted successfully!");
@@ -67,6 +68,7 @@
                 alert("Failed to submit email.");
             }
         });
+
     </script>
 </body>
 </html>
