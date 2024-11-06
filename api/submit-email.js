@@ -24,7 +24,8 @@ export default async (req, res) => {
             await setDoc(doc(db, "emails", email), { signup: signupDate });
             res.status(200).json({ message: "Email submitted successfully!" });
         } catch (error) {
-            console.error("Error adding email: ", error);
+            console.log("API Key:", process.env.FIREBASE_API_KEY); // This should not be undefined
+            console.error("Error adding email to Firestore:", error.message, error.stack);
             res.status(500).json({ error: "Failed to submit email." });
         }
     } else {
