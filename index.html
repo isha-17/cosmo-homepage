@@ -25,13 +25,13 @@
         
         // Firebase configuration
         const firebaseConfig = {
-            apiKey: GOOGLE_API_KEY,
+            apiKey: process.env.GOOGLE_API_KEY,
             authDomain: "reccapp-26231.firebaseapp.com",
-            databaseURL: GOOGLE_DATABASE_URL,
+            databaseURL: process.env.GOOGLE_DATABASE_URL,
             projectId: "reccapp-26231",
             storageBucket: "reccapp-26231.appspot.com",
             messagingSenderId: "261665606195",
-            appId: GOOGLE_APP_ID,
+            appId: process.env.GOOGLE_APP_ID,
             measurementId: "G-YZ6V9R6G5J"
         };
         
