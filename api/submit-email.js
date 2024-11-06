@@ -2,13 +2,13 @@ import { initializeApp } from "firebase/app";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 
 const firebaseConfig = {
-    apiKey: process.env.GOOGLE_API_KEY,
+    apiKey: "AIzaSyA07mlt-5wqTj-LBar4e4yK1JRPKB-5L1k",
     authDomain: "reccapp-26231.firebaseapp.com",
-    databaseURL: process.env.GOOGLE_DATABASE_URL,
+    databaseURL: "https://reccapp-26231-default-rtdb.europe-west1.firebasedatabase.app",
     projectId: "reccapp-26231",
     storageBucket: "reccapp-26231.appspot.com",
     messagingSenderId: "261665606195",
-    appId: process.env.GOOGLE_APP_ID,
+    appId: "1:261665606195:web:e8130ad368e08a397a7146",
     measurementId: "G-YZ6V9R6G5J"
 };
 
