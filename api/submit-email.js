@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyA07mlt-5wqTj-LBar4e4yK1JRPKB-5L1k",
+    apiKey: process.env.FIREBASE_API_KEY,
     authDomain: "reccapp-26231.firebaseapp.com",
     databaseURL: "https://reccapp-26231-default-rtdb.europe-west1.firebasedatabase.app",
     projectId: "reccapp-26231",
@@ -10,7 +10,7 @@ const firebaseConfig = {
     messagingSenderId: "261665606195",
     appId: "1:261665606195:web:e8130ad368e08a397a7146",
     measurementId: "G-YZ6V9R6G5J"
-};
+  };
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
