@@ -20,50 +20,26 @@
     </div>
 
     <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-        import { getFirestore, collection, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
-        
-        // Firebase configuration
-        const firebaseConfig = {
-            apiKey: process.env.GOOGLE_API_KEY,
-            authDomain: "reccapp-26231.firebaseapp.com",
-            databaseURL: process.env.GOOGLE_DATABASE_URL,
-            projectId: "reccapp-26231",
-            storageBucket: "reccapp-26231.appspot.com",
-            messagingSenderId: "261665606195",
-            appId: process.env.GOOGLE_APP_ID,
-            measurementId: "G-YZ6V9R6G5J"
-        };
-        
-        // Initialize Firebase and Firestore
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-
-        // Test Firestore write operation
-        // try {
-        //     await setDoc(doc(db, "emails", "test@example.com"), {
-        //         signup: "Test Date"
-        //     });
-        //     console.log("Test document written successfully.");
-        // } catch (error) {
-        //     console.error("Error adding test document: ", error);
-        // }
-
-    
         // Form submission handler
         document.querySelector("form").addEventListener("submit", async (e) => {
-            e.preventDefault(); // Prevent form from refreshing
+            e.preventDefault();
             const email = e.target.elements[0].value;
-            const signupDate = new Date().toISOString();
             try {
-                // Add email and signup date to Firestore using setDoc and doc
-                await setDoc(doc(db, "emails", email), { 
-                    signup: signupDate 
+                const response = await fetch("/api/submit-email", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email })
                 });
-                alert("Email submitted successfully!");
-                e.target.reset();
+
+                const result = await response.json();
+                if (response.ok) {
+                    alert(result.message);
+                    e.target.reset();
+                } else {
+                    alert("Failed to submit email.");
+                }
             } catch (error) {
-                console.error("Error adding email: ", error);
+                console.error("Submission error:", error);
                 alert("Failed to submit email.");
             }
         });
